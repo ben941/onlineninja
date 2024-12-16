@@ -17,6 +17,39 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(138, 75, 175, 0.2);
         }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+        .modal-content {
+            position: relative;
+            background-color: #1f2937;
+            margin: 15% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            border: 1px solid #4c1d95;
+        }
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100">
@@ -106,7 +139,7 @@
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 tile-hover border border-gray-700">
                     <h3 class="text-xl font-bold mb-4 text-purple-400">ORM Ninja</h3>
-                    <p class="text-gray-300">Cpmplete Course Access</p>
+                    <p class="text-gray-300">Complete Course Access</p>
                     <p class="text-purple-400 font-bold mt-2">$497 value</p>
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 tile-hover border border-gray-700">
@@ -145,7 +178,7 @@
                 
                 <!-- Value Proposition -->
                 <div class="mb-8">
-                    <p class="text-xl mb-2">Total Value: <span class="line-through text-gray-400">$4,578</span></p>
+                    <p class="text-xl mb-2">Total Value: <span class="line-through text-gray-400">$4,081</span></p>
                     <p class="text-lg text-gray-300 mb-6">Your Investment: Only $97/month</p>
                     <div class="flex items-center justify-center space-x-2 mb-4">
                         <span class="text-purple-400 text-2xl">🥷</span>
@@ -210,7 +243,7 @@
                     </div>
                     <div class="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700">
                         <h3 class="text-xl font-bold mb-4 text-purple-400">How do the monthly group calls work?</h3>
-                        <p class="text-gray-300">A live monthly call is where members get their questions answered, get feedback, and learn from other members' experiences. All calls are recorded for those who can't attend live. The first monthl call is planned for mid Feb 2025</p>
+                        <p class="text-gray-300">A live monthly call is where members get their questions answered, get feedback, and learn from other members' experiences. All calls are recorded for those who can't attend live. The first monthly call is planned for mid Feb 2025</p>
                     </div>
                     <div class="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700">
                         <h3 class="text-xl font-bold mb-4 text-purple-400">Can I cancel my membership?</h3>
@@ -225,7 +258,7 @@
         </div>
     </div>
 
-     <!-- CTA Section -->
+    <!-- CTA Section -->
     <div class="gradient-dark">
         <div class="container mx-auto px-4 py-16">
             <div class="max-w-4xl mx-auto text-center">
@@ -236,5 +269,66 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div id="joinModal" class="modal">
+        <div class="modal-content">
+            <span class="close text-gray-400 hover:text-white">&times;</span>
+            <h2 class="text-2xl font-bold mb-6 text-purple-400">How to Join Online Ninja</h2>
+            
+            <div class="space-y-6">
+                <div class="mb-8">
+                    <p class="text-gray-300 mb-4">Online Ninja is the private community hosted on askillissue.com. Paid members can access all Online Ninja tools and resources within the premium community.</p>
+                    
+                    <ol class="list-decimal list-inside space-y-4 text-gray-300 ml-4">
+                        <li class="text-gray-300">Go to askillissue.com</li>
+                        <li class="text-gray-300">Signup / Join</li>
+                        <li class="text-gray-300">Via menu (top right) click 'Upgrade To Premium'</li>
+                        <li class="text-gray-300">Pay and You Are In!</li>
+                    </ol>
+                </div>
+                
+                <div class="text-gray-400 text-sm">
+                    <p>If you have any questions drop a message via the chat box on the askillissue.com site.</p>
+                </div>
+                
+                <div class="text-center">
+                    <a href="https://askillissue.com" target="_blank" class="inline-block bg-purple-600 text-white font-bold px-8 py-3 rounded-lg hover:bg-purple-500 transition duration-300">
+                        Go to askillissue.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal JavaScript -->
+    <script>
+        // Get modal elements
+        const modal = document.getElementById('joinModal');
+        const closeBtn = document.getElementsByClassName('close')[0];
+        
+        // Get all CTA buttons
+        const ctaButtons = document.querySelectorAll('a[href="#"]');
+        
+        // Show modal when any CTA button is clicked
+        ctaButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('show');
+            });
+        });
+        
+        // Close modal when clicking the X
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 </html>
